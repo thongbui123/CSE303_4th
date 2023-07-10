@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class EISUBARRAY_SubarrayWithTheLargestSum_55 {
+public class EISUBARRAY_SubarrayWithTheLargestSum_90 {
 
 	public static void main(String[] args) {
 		int t = ni();
@@ -14,8 +14,8 @@ public class EISUBARRAY_SubarrayWithTheLargestSum_55 {
 			int sum = 0;
 			for (int j = i; j < arr.length; j++) {
 				sum += arr[j];
-				if (sum > max) {
-					max = sum;
+				if (Math.abs(sum) > max) {
+					max = Math.abs(sum);
 				}
 			}
 		}
