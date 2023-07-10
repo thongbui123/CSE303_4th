@@ -20,10 +20,7 @@ public class EIPAINTING_ArtExhibition2 {
 			if (i != list.size() - 1) {
 				cur = list.get(i);
 				next = list.get(i + 1);
-				if (next > cur)
-					count += cur;
-				else
-					count += next;
+				count += (next > cur) ? cur : next;
 			}
 		}
 		System.out.println(count);

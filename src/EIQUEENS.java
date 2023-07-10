@@ -1,62 +1,34 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIPAGES {
+public class EIQUEENS {
 
 	public static void main(String[] args) {
-		StringBuffer sb = new StringBuffer();
-		int n = ni(), flag = 1;
-		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) {
-			arr[i] = ni();
-		}
-		if (arr.length == 1) {
-			sb.append(arr[0]);
-		} else {
-			Arrays.sort(arr);
-			sb.append(arr[0]);
-			for (int i = 1; i < arr.length - 1; i++) {
-				if (arr[i] - 1 != arr[i - 1]) {
-					sb.append(" ").append(arr[i]);
-					if (flag == 0)
-						flag++;
-				} else {
-					if (arr[i] + 1 != arr[i + 1]) {
-						if (flag > 1) 
-							sb.append("-").append(arr[i]);						
-						if (flag == 1) 
-							sb.append(" ").append(arr[i]);		
-						flag = 0;
-					} else 
-						flag++;					
+		List<int[]> queens = new ArrayList<int[]>();
+		boolean res = true;
+		for (int i = 0; i < 8; i++) {
+			String s = ns();
+			for (int j = 0; j < 8; j++) {
+				if (s.charAt(j) == '*') {
+					int[] arr = new int[] { i, j };
+					queens.add(arr);
 				}
 			}
-			int last = arr.length - 1;
-			if (arr[last - 1] == arr[last] - 1 && flag > 1) 
-				sb.append("-").append(arr[last]);
-			 else 
-				sb.append(" ").append(arr[last]);
-		}			
-		System.out.println(sb);
-	}
-
-	static int getMin(List<Integer> list) {
-		int min = Integer.MAX_VALUE;
-		for (int i = 0; i < list.size(); i++) {
-			min = Math.min(list.get(i), min);
 		}
-		return min;
-	}
-
-	static List<Integer> removeItem(List<Integer> list, int item) {
-		for (int i = list.size() - 1; i >= 0; i--) {
-			if (list.get(i) == item) {
-				list.remove(i);
-			} else {
-				list.set(i, list.get(i) - item);
+		if (queens.size() == 8) {
+			for (int i = 0; i < queens.size() - 1; i++) {
+				for (int j = i + 1; j < queens.size(); j++) {
+					if (queens.get(i)[0] == queens.get(j)[0])
+						res = false;
+					if (queens.get(i)[1] == queens.get(j)[1])
+						res = false;
+					if (Math.abs(queens.get(i)[0] - queens.get(j)[0]) == Math.abs(queens.get(i)[1] - queens.get(j)[1]))
+						res = false;
+				}
 			}
-		}
-		return list;
+		} else
+			res = false;
+		System.out.println(res ? "valid" : "invalid");
 	}
 
 	static InputStream is = System.in;
