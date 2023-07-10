@@ -1,35 +1,45 @@
 import java.io.*;
 import java.util.*;;
 
-public class EISUBARRAY_SubarrayWithTheLargestSum_100 {
+public class EIMIN_80 {
 
 	public static void main(String[] args) {
-		int t = ni();
-		int[] arr = new int[t];
-		for (int i = 0; i < t; i++) {
-			arr[i] = ni();
+		StringBuffer sb = new StringBuffer();
+		int n = ni(), k = ni();
+		List<Integer> list = new ArrayList<Integer>();
+		for (int i = 0; i < n; i++) {
+			int num = ni();
+			list.add(num);
 		}
-		int max = 0, min = 0;
-		int sumMax = 0, sumMin = 0;
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] + sumMax > 0) {
-				sumMax += arr[i];
-				max = Math.max(sumMax, max);
+		for (int i = 0; i < k; i++) {
+			if (list.size() == 0) {
+				sb.append(0).append("\n");
 			} else {
-				sumMax = 0;
-			}
-			if (arr[i] + sumMin < 0) {
-				sumMin += arr[i];
-				min = Math.min(sumMin, min);
-			} else {
-				sumMin = 0;
+				int min = getMin(list);
+				sb.append(min).append("\n");
+				list = removeItem(list, min);
 			}
 		}
-		if (Math.abs(min) > max) {
-			System.out.println(Math.abs(min));
-		} else {
-			System.out.println(max);
+		System.out.println(sb);
+	}
+
+	static int getMin(List<Integer> list) {
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i < list.size(); i++) {
+			min = Math.min(list.get(i), min);
 		}
+		return min;
+	}
+
+	static List<Integer> removeItem(List<Integer> list, int item) {
+		for (int i = list.size() - 1; i >= 0; i--) {
+			if (list.get(i) == item) {
+				list.remove(i);
+			} else {
+				list.set(i, list.get(i) - item);
+			}
+		}
+		return list;
 	}
 
 	static InputStream is = System.in;
