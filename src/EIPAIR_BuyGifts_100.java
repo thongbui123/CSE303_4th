@@ -6,24 +6,25 @@ public class EIPAIR_BuyGifts_100 {
 	public static void main(String[] args) {
 		int t = ni();
 		while (t-- > 0) {
-			int n = ni(), count = 0;
-			Map<Integer, Integer> map = new Hashtable<Integer, Integer>();
+			int n = ni();
+			long count = 0;
+			Map<Long, Long> map = new Hashtable<Long, Long>();
 			for (int i = 0; i < n; i++) {
-				int num = ni();
+				long num = nl();
 				if (!map.containsKey(num))
-					map.put(num, 1);
+					map.put(num, (long) 1);
 				else
 					map.put(num, map.get(num) + 1);
 			}
-			List<Integer> list = new ArrayList<>(map.values());
-			for (Integer integer : list) {
-				count += tinhSoCachChon(integer);
+			List<Long> list = new ArrayList<>(map.values());
+			for (Long integer : list) {
+				count += calWays(integer);
 			}
 			System.out.println(count);
 		}
 	}
 
-	static int tinhSoCachChon(int amount) {
+	static long calWays(long amount) {
 		return amount * (amount - 1) / 2;
 	}
 
