@@ -1,62 +1,30 @@
 import java.io.*;
-import java.util.*;
+import java.util.*;;
 
-public class EIPAGES {
+public class EIMIN_100 {
 
 	public static void main(String[] args) {
 		StringBuffer sb = new StringBuffer();
-		int n = ni(), flag = 1;
-		int[] arr = new int[n];
+		int n = ni(), k = ni();
+		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < n; i++) {
-			arr[i] = ni();
+			int num = ni();
+			list.add(num);
 		}
-		if (arr.length == 1) {
-			sb.append(arr[0]);
-		} else {
-			Arrays.sort(arr);
-			sb.append(arr[0]);
-			for (int i = 1; i < arr.length - 1; i++) {
-				if (arr[i] - 1 != arr[i - 1]) {
-					sb.append(" ").append(arr[i]);
-					if (flag == 0)
-						flag++;
-				} else {
-					if (arr[i] + 1 != arr[i + 1]) {
-						if (flag > 1) 
-							sb.append("-").append(arr[i]);						
-						if (flag == 1) 
-							sb.append(" ").append(arr[i]);		
-						flag = 0;
-					} else 
-						flag++;					
-				}
-			}
-			int last = arr.length - 1;
-			if (arr[last - 1] == arr[last] - 1 && flag > 1) 
-				sb.append("-").append(arr[last]);
-			 else 
-				sb.append(" ").append(arr[last]);
-		}			
-		System.out.println(sb);
-	}
-
-	static int getMin(List<Integer> list) {
-		int min = Integer.MAX_VALUE;
-		for (int i = 0; i < list.size(); i++) {
-			min = Math.min(list.get(i), min);
-		}
-		return min;
-	}
-
-	static List<Integer> removeItem(List<Integer> list, int item) {
-		for (int i = list.size() - 1; i >= 0; i--) {
-			if (list.get(i) == item) {
-				list.remove(i);
+		Collections.sort(list);
+		int preVal = 0, preIdx = -1, preSub = 0;
+		for (int i = 0; i < k; i++) {
+			while (preIdx < n - 1 && list.get(preIdx + 1) == preVal)
+				preIdx++;
+			if (preIdx == n - 1) {
+				sb.append(0).append("\n");
 			} else {
-				list.set(i, list.get(i) - item);
+				preSub = preVal;
+				preVal = list.get(++preIdx);
+				sb.append(preVal - preSub).append("\n");
 			}
 		}
-		return list;
+		System.out.println(sb);
 	}
 
 	static InputStream is = System.in;
