@@ -1,12 +1,13 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIPAIR_BuyGifts_60 {
+public class EIPAIR_100_Cach1 {
 
 	public static void main(String[] args) {
 		int t = ni();
 		while (t-- > 0) {
-			int n = ni(), count = 0, left = 0, right = 1;
+			int n = ni(), left = 0, right = 1;
+			long count = 0;
 			int[] arr = new int[n];
 			for (int i = 0; i < arr.length; i++) {
 				arr[i] = ni();

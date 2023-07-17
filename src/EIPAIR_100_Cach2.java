@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIPAIR_BuyGifts_100 {
+public class EIPAIR_100_Cach2 {
 
 	public static void main(String[] args) {
 		int t = ni();
