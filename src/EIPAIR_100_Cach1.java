@@ -6,7 +6,7 @@ public class EIPAIR_100_Cach1 {
 	public static void main(String[] args) {
 		int t = ni();
 		while (t-- > 0) {
-			int n = ni(), left = 0, right = 1;
+			int n = ni();
 			long count = 0;
 			int[] arr = new int[n];
 			for (int i = 0; i < arr.length; i++) {
@@ -16,6 +16,7 @@ public class EIPAIR_100_Cach1 {
 			if (arr.length == 1) {
 				count = 0;
 			} else {
+				int left = 0, right = 1;
 				while (left < arr.length && right < arr.length) {
 					if (arr[right] - arr[left] == 0) {
 						count += (right - left);
