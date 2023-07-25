@@ -11,8 +11,8 @@ public class EIUQBHV {
 		for (int i = 1; i < pattern.length(); i++) {
 			Set<String> newItem = new TreeSet<>();
 			for (String item : items) {
-				for (int k = 0; k <= item.length(); k++) {
-					newItem.add(item.substring(0, k) + pattern.charAt(i) + item.substring(k));					
+				for (int j = 0; j <= item.length(); j++) {
+					newItem.add(item.substring(0, j) + pattern.charAt(i) + item.substring(j));					
 				}
 			}
 			items = newItem;
