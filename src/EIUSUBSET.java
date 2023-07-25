@@ -5,9 +5,25 @@ public class EIUSUBSET {
 
 	public static void main(String[] args) {
 		int t = ni();
+		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < t; i++) {
 			int n = ni();
+			list.add(n);
 		}
+		List<String> subsets = new ArrayList<String>();
+		for (int i = t - 1; i >= 0; i--) {
+			subsets.add(list.get(i).toString());
+			String need = list.get(i).toString();
+			for (int j = 0; !subsets.get(j).equals(need); j++) {
+				subsets.add(need + " " + subsets.get(j));
+			}
+		}
+		StringBuilder sb =  new StringBuilder();
+		sb.append(subsets.size()).append("\n");
+		for (String string : subsets) {
+			sb.append(string).append("\n");
+		}
+		System.out.println(sb);
 	}
 
 	static InputStream is = System.in;
