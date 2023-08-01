@@ -7,15 +7,28 @@ public class EIULOGGING3 {
 		int t = ni();
 		long[] arr = new long[t + 1];
 		long[] max = new long[t + 1];
+		long[] way = new long[t + 1];
 		for (int i = 1; i < t + 1; i++) {
 			arr[i] = nl();
 		}
-		max[0] = 0;
 		max[1] = Math.max(max[0], arr[1]);
+		way[0] = 1;
+		way[1] = 1;
 		for (int i = 2; i < t + 1; i++) {
-			max[i] = Math.max(max[i - 2] + arr[i], max[i - 1]);
+			// max[i] = Math.max(max[i - 2] + arr[i], max[i - 1]);
+			if (max[i - 2] + arr[i] > max[i - 1]) {
+				max[i] = max[i - 2] + arr[i];
+				way[i] = way[i - 2];
+			} else if (max[i - 2] + arr[i] == max[i - 1]) {
+				max[i] = max[i - 2] + arr[i];
+				way[i] = (way[i - 2] + way[i - 1]) % 1000000007;
+			} else {
+				max[i] = max[i - 1];
+				way[i] = way[i - 1];
+			}
+
 		}
-		System.out.println(max[t]);
+		System.out.println(max[t] + " " + way[t]);
 	}
 
 	static InputStream is = System.in;
