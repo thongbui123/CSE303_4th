@@ -25,10 +25,9 @@ public class EIUDEPRE_Cach2 {
 	}
 
 	static double binarySearch(double left, double right, long before, long after) {
-
 		while (left != right) {
 			double mid = (left + right) / 2;
-			double price = 
+			double price = calculate(mid, before, lenbuf)
 			if ( >= after) {
 				res = x;
 			} 
