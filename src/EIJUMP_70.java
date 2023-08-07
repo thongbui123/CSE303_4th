@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIJUMP {
+public class EIJUMP_70 {
 
 	public static void main(String[] args) {
 		int t = ni();
