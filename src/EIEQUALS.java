@@ -4,45 +4,45 @@ import java.util.*;;
 public class EIEQUALS {
 
 	public static void main(String[] args) {
-		int t = ni(), k = ni();
-		int[] arr1 = new int[t];
-		int[] arr2 = new int[t];
-		for (int i = 0; i < t; i++) {
+		int n = ni(), k = ni();
+		int[] arr1 = new int[n];
+		int[] arr2 = new int[n];
+		for (int i = 0; i < n; i++) {
 			arr1[i] = ni();
 		}
-		for (int i = 0; i < t; i++) {
+		for (int i = 0; i < n; i++) {
 			arr2[i] = ni();
 		}
 		Arrays.sort(arr1);
 		Arrays.sort(arr2);
-		boolean[] check1 = new boolean[t];
-		boolean[] check2 = new boolean[t];
-		int i = 0, j = 0, count = 0;
+		boolean[] check1 = new boolean[n];
+		boolean[] check2 = new boolean[n];
+		int index1 = 0, index2 = 0, count = 0;
 		boolean res = false;
-		while (i < arr1.length && j < arr2.length) {
-			int x = arr1[i] - arr2[j];
+		while (index1 < arr1.length && index2 < arr2.length) {
+			int x = arr1[index1] - arr2[index2];
 			if (x == 0) {
-				check1[i] = true;
-				check2[j] = true;
-				i++;
-				j++;
+				check1[index1] = true;
+				check2[index2] = true;
+				index1++;
+				index2++;
 				count++;
 			} else {
 				if (x > 0) {
-					j++;
+					index2++;
 				} else {
-					i++;
+					index1++;
 				}
 			}
 		}
-		if (count == t) {
+		if (count == n) {
 			res = true;
-		} else if (count == t - 1) {
-			for (int l = 0; l < check1.length; l++) {
-				if (check1[l] == false) {
-					for (int l2 = 0; l2 < check2.length; l2++) {
-						if (check2[l2] == false) {
-							if (Math.abs(arr1[l] - arr2[l2]) <=k) {
+		} else if (count == n - 1) {
+			for (int i = 0; i < check1.length; i++) {
+				if (check1[i] == false) {
+					for (int j = 0; j < check2.length; j++) {
+						if (check2[j] == false) {
+							if (Math.abs(arr1[i] - arr2[j]) <= k) {
 								res = true;
 							}
 						}

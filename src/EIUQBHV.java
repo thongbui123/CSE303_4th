@@ -6,10 +6,10 @@ public class EIUQBHV {
 	public static void main(String[] args) {
 		StringBuilder sb = new StringBuilder();
 		String pattern = ns();
-		Set<String> items = new TreeSet<>();
+		Set<String> items = new HashSet<>();
 		items.add(String.valueOf(pattern.charAt(0)));
 		for (int i = 1; i < pattern.length(); i++) {
-			Set<String> newItem = new TreeSet<>();
+			Set<String> newItem = new HashSet<>();
 			for (String item : items) {
 				for (int j = 0; j <= item.length(); j++) {
 					newItem.add(item.substring(0, j) + pattern.charAt(i) + item.substring(j));					
