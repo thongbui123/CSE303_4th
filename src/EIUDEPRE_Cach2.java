@@ -1,27 +1,39 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIUDEPRE {
+public class EIUDEPRE_Cach2 {
 
 	public static void main(String[] args) {
 		int n = ni();
 		long before = nl();
 		long after = nl();
-		double res = 0;
-		for (double x = 0; x <= 1; x += 0.000001) {
-			double price = before;
-			for (int i = 0; i < n; i++) {
-				double rate = x - x * i / n;
-				price = (price * (1 - rate));
-			}
-			if (price >= after) {
-				res = x;
-			} else {
-				break;
-			}
-		}
+		double res = binarySearch(0, 1);
+
+		
+
 		System.out.println(res);
 
+	}
+	
+	static double calculate(double x, long before, int n) {
+		double price = before;
+		for (int i = 0; i < n; i++) {
+			double rate = x - x * i / n;
+			price = (price * (1 - rate));
+		}
+		return price;
+	}
+
+	static double binarySearch(double left, double right, long before, long after) {
+
+		while (left != right) {
+			double mid = (left + right) / 2;
+			double price = 
+			if ( >= after) {
+				res = x;
+			} 
+		}
+		return left;
 	}
 
 	static InputStream is = System.in;
