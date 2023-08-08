@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class EITHIEF2 {
+public class EITHIEF2_Cach1 {
 
 	public static void main(String[] args) {
 		int n = ni(), p = ni();
