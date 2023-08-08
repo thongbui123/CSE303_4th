@@ -1,38 +1,22 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIUDEPRE_Cach2 {
+public class EITHIEF2 {
 
 	public static void main(String[] args) {
-		int n = ni();
-		long before = nl();
-		long after = nl();
-		double res = binarySearch(0, 1);
-		
-		
-
-		System.out.println(res);
-
-	}
-	
-	static double calculate(double x, long before, int n) {
-		double price = before;
-		for (int i = 0; i < n; i++) {
-			double rate = x - x * i / n;
-			price = (price * (1 - rate));
+		int n = ni(), p = ni();
+		long[][] maxValues = new long[n + 1][p + 1];
+		for (int i = 1; i <= n; i++) {
+			long wi = nl(), vi = nl();
+			for (int j = 1; j <= p; j++) {
+				if (j < wi) {
+					maxValues[i][j] = maxValues[i - 1][j];
+				} else {
+					maxValues[i][j] = Math.max(maxValues[i - 1][j], maxValues[i - 1][(int) (j - wi)] + vi);
+				}
+			}
 		}
-		return price;
-	}
-
-	static double binarySearch(double left, double right, long before, long after) {
-		while (left <= right) {
-			double mid = (left + right) / 2;
-			double price = calculate(mid, before, lenbuf);
-			if (price >= after) {
-				res = x;
-			} 
-		}
-		return left;
+		System.out.println(maxValues[n][p]);
 	}
 
 	static InputStream is = System.in;
