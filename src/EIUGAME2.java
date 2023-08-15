@@ -1,25 +1,15 @@
 import java.io.*;
 import java.util.*;;
 
-public class EI2122Q1ADAF2_MinimumNumberOfMoves_100 {
+public class EIUGAME2 {
 
 	public static void main(String[] args) {
-		int n = ni();
-		int res = n;
-		int count = 0;
-		while (res > 0) {
-			String res_string = Integer.toString(res);
-			char[] parts = res_string.toCharArray();
-			if (parts.length < 2) {
-				count++;
-				break;
-			}
-			Arrays.sort(parts);
-			int max = Integer.parseInt(parts[parts.length - 1] + "");
-			res -= max;
-			count++;
+		int n = ni(), m = ni();
+		long[] res = new long[n + 1];
+		long[] count new long[m+1];
+		for (int i = 2; i <= m; i++) {
+			res[i] =  Long.MIN_VALUE;
 		}
-		System.out.println(count);
 	}
 
 	static InputStream is = System.in;

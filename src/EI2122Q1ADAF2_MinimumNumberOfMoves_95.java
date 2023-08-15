@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class EI2122Q1ADAF2_MinimumNumberOfMoves_75 {
+public class EI2122Q1ADAF2_MinimumNumberOfMoves_95 {
 
 	public static void main(String[] args) {
 		int n = ni();
@@ -9,18 +9,23 @@ public class EI2122Q1ADAF2_MinimumNumberOfMoves_75 {
 		int count = 0;
 		while (res > 0) {
 			String res_string = Integer.toString(res);
-			char[] parts = res_string.toCharArray();
+			String[] parts = res_string.split("");
 			if (parts.length < 2) {
 				count++;
 				break;
 			}
-			Arrays.sort(parts);
-			int max = Integer.parseInt(parts[parts.length - 1] + "");
-			res -= max;
+			int[] arr = new int[parts.length];
+			for (int i = 0; i < parts.length; i++) {
+				arr[i] = Integer.parseInt(parts[i]);
+			}
+			Arrays.sort(arr);
+			res -= arr[parts.length - 1];
 			count++;
 		}
 		System.out.println(count);
 	}
+	
+	
 
 	static InputStream is = System.in;
 	static byte[] inbuf = new byte[1 << 24];
