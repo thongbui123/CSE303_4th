@@ -1,26 +1,24 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIJUMP_100 {
+public class EISTORE {
 
 	public static void main(String[] args) {
-		int n = ni();
+		int n = ni(), v = ni();
 		int[] arr = new int[n];
-		Map<Integer, Integer> map = new HashMap<>();
+		int[] values = new int[v + 1];
 		for (int i = 0; i < n; i++) {
 			arr[i] = ni();
 		}
-		map.put(arr[0], 0);
-		int[] min = new int[n + 1];
-		for (int i = 1; i < arr.length; i++) {
-			if (!map.containsKey(arr[i])) {
-				min[i] = min[i - 1] + 1;
-			} else {
-				min[i] = Math.min(min[i - 1] + 1, min[map.get(arr[i])] + 1);
+		for (int i = 1; i <= values.length; i++) {
+			values[i] = v;
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[j] <= i) {
+					values[i] = Math.min(values[i], values[i - arr[j]] + 1);
+				}
 			}
-			map.put(arr[i], i);
 		}
-		System.out.println(min[n - 1]);
+		System.out.println(values[v]);
 	}
 
 	static InputStream is = System.in;

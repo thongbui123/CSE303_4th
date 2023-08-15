@@ -7,7 +7,7 @@ public class EIUDEPRE_Cach2 {
 		int n = ni();
 		long before = nl();
 		long after = nl();
-		double res = binarySearch(0, 1);
+		double res = 0;
 		
 		
 
@@ -29,7 +29,6 @@ public class EIUDEPRE_Cach2 {
 			double mid = (left + right) / 2;
 			double price = calculate(mid, before, lenbuf);
 			if (price >= after) {
-				res = x;
 			} 
 		}
 		return left;

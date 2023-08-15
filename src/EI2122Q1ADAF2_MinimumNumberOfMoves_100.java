@@ -1,26 +1,20 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIJUMP_100 {
+public class EI2122Q1ADAF2_MinimumNumberOfMoves_100 {
 
 	public static void main(String[] args) {
 		int n = ni();
-		int[] arr = new int[n];
-		Map<Integer, Integer> map = new HashMap<>();
-		for (int i = 0; i < n; i++) {
-			arr[i] = ni();
+		String s = n + "";
+		int count = 1;
+		while (s.length() > 1) {
+			char[] c = s.toCharArray();
+			Arrays.sort(c);
+			n -= Integer.parseInt("" + c[c.length - 1]);
+			count++;
+			s = n + "";
 		}
-		map.put(arr[0], 0);
-		int[] min = new int[n + 1];
-		for (int i = 1; i < arr.length; i++) {
-			if (!map.containsKey(arr[i])) {
-				min[i] = min[i - 1] + 1;
-			} else {
-				min[i] = Math.min(min[i - 1] + 1, min[map.get(arr[i])] + 1);
-			}
-			map.put(arr[i], i);
-		}
-		System.out.println(min[n - 1]);
+		System.out.println(count);
 	}
 
 	static InputStream is = System.in;
