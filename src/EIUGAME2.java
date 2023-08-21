@@ -6,7 +6,7 @@ public class EIUGAME2 {
 	public static void main(String[] args) {
 		int n = ni(), m = ni();
 		long[] res = new long[n + 1];
-		long[] count new long[m+1];
+		long[] count = new long[m+1];
 		for (int i = 2; i <= m; i++) {
 			res[i] =  Long.MIN_VALUE;
 		}
