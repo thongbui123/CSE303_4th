@@ -5,11 +5,39 @@ public class EIUGAME2 {
 
 	public static void main(String[] args) {
 		int n = ni(), m = ni();
-		long[] res = new long[n + 1];
-		long[] count = new long[m+1];
-		for (int i = 2; i <= m; i++) {
-			res[i] =  Long.MIN_VALUE;
+		long[][] arr = new long[n + 1][m + 1];
+		long[][] count = new long[n + 1][m + 1];
+		for (int i = 1; i < n + 1; i++) {
+			for (int j = 1; j < m + 1; j++) {
+				arr[i][j] = nl();
+			}
 		}
+		count[0][1] = 1;
+		count[1][0] = 1;
+		for (int i = 1; i < n + 1; i++) {
+			for (int j = 1; j < m + 1; j++) {
+				if (i == 1) {
+					arr[i][j] = arr[i][j - 1] + arr[i][j];
+					count[i][j] = 1;
+					continue;
+				}
+				if (j == 1) {
+					arr[i][j] = arr[i - 1][j] + arr[i][j];
+					count[i][j] = 1;
+					continue;
+				}
+				arr[i][j] += Math.max(arr[i - 1][j], arr[i][j - 1]);
+				if (arr[i - 1][j] > arr[i][j - 1]) {
+					count[i][j] = count[i - 1][j];
+				} else if (arr[i - 1][j] == arr[i][j - 1]) {
+					count[i][j] = (count[i - 1][j] + count[i][j - 1]) % 10000000;
+				} else {
+					count[i][j] = count[i][j - 1];
+				}
+
+			}
+		}
+		System.out.println(arr[n][m] + " " + count[n][m]);
 	}
 
 	static InputStream is = System.in;

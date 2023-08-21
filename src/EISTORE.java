@@ -10,7 +10,7 @@ public class EISTORE {
 		for (int i = 0; i < n; i++) {
 			arr[i] = ni();
 		}
-		for (int i = 1; i <= values.length; i++) {
+		for (int i = 1; i <= values.length - 1; i++) {
 			values[i] = v;
 			for (int j = 0; j < arr.length; j++) {
 				if (arr[j] <= i) {
