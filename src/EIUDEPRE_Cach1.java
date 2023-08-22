@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;;
 
-public class EIUDEPRE {
+public class EIUDEPRE_Cach1 {
 
 	public static void main(String[] args) {
 		int n = ni();
