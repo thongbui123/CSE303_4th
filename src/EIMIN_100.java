@@ -12,9 +12,9 @@ public class EIMIN_100 {
 			list.add(num);
 		}
 		Collections.sort(list);
-		int preVal = 0, preIdx = -1, preSub = 0;
-		for (int i = 0; i < k; i++) {
-			while (preIdx < n - 1 && list.get(preIdx + 1) == preVal)
+		int preVal = 0, preSub = 0, preIdx = -1;
+		while (k-- > 0) {
+			while(preIdx < n - 1 && list.get(preIdx+1) == preVal)
 				preIdx++;
 			if (preIdx == n - 1) {
 				sb.append(0).append("\n");

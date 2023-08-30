@@ -6,16 +6,16 @@ public class EIUQBHV {
 	public static void main(String[] args) {
 		StringBuilder sb = new StringBuilder();
 		String pattern = ns();
-		Set<String> items = new HashSet<>();
-		items.add(String.valueOf(pattern.charAt(0)));
+		Set<String> items = new TreeSet<String>();
+		items.add(pattern.charAt(0) + "");
 		for (int i = 1; i < pattern.length(); i++) {
-			Set<String> newItem = new HashSet<>();
+			Set<String> newItems = new TreeSet<String>();
 			for (String item : items) {
 				for (int j = 0; j <= item.length(); j++) {
-					newItem.add(item.substring(0, j) + pattern.charAt(i) + item.substring(j));					
+					newItems.add(item.substring(0, j) + pattern.charAt(i) + item.substring(j));
 				}
 			}
-			items = newItem;
+			items = newItems;
 		}
 		sb.append(items.size()).append("\n");
 		for (String string : items) {
@@ -23,6 +23,7 @@ public class EIUQBHV {
 		}
 		System.out.println(sb);
 	}
+
 	static InputStream is = System.in;
 	static byte[] inbuf = new byte[1 << 24];
 	static int lenbuf = 0, ptrbuf = 0;

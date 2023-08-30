@@ -1,22 +1,23 @@
 import java.io.*;
-import java.util.*;;
+import java.util.*;
 
-public class EI2122Q1ADAF2_MinimumNumberOfMoves_100 {
+public class EI2223Q1ADAF2 {
 
 	public static void main(String[] args) {
-		int n = ni();
-		int res = n;
-		int count = 0;
-		while (res > 0) {
-			String s = String.valueOf(res);
-			char[] parts = s.toCharArray();
-			if (parts.length < 2) {
-				count++;
-				break;
+		String s = ns();
+		String pattern = ns();
+		int i = 0, j = 0, count = 0;
+		while(i < s.length() && j < pattern.length()) {
+			if (s.charAt(i) == pattern.charAt(j)) {
+				i++;
+				j++;
+				if (j == pattern.length()) {	
+					j = 0;
+					count++;
+				}
+			} else {		
+				i++;
 			}
-			Arrays.sort(parts);
-			res -= Integer.parseInt(parts[parts.length - 1] + "");
-			count++;
 		}
 		System.out.println(count);
 	}

@@ -10,9 +10,8 @@ public class LOGGING {
 		for (int i = 1; i < t + 1; i++) {
 			arr[i] = nl();
 		}
-		max[0] = 0;
 		max[1] = Math.max(max[0], arr[1]);
-		for (int i = 2; i < t + 1; i++) {
+		for (int i = 2; i < max.length; i++) {
 			max[i] = Math.max(max[i - 2] + arr[i], max[i - 1]);
 		}
 		System.out.println(max[t]);
